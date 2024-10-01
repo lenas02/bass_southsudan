@@ -2,7 +2,7 @@
 title: "Survey Dashboard"
 subtitle: "2024 IOM South Sudan"
 author: "Data & Methods Subteam - Bass Connections"
-date: "2024-09-24"
+date: "2024-10-01"
 output:
  html_document:
    theme: journal
@@ -44,7 +44,7 @@ Total number of respondents: **`r df %>% nrow()`**
 
 All question numbers below are based on the "Key Variables for Descriptive Statistics" doc file.
 
-All the descriptives calculated for index questions were based on the **unimputed** variable.
+All the descriptive calculated for index questions were based on the **unimputed** variable.
 
 # 1) Socio-demographics questions
 
@@ -52,7 +52,7 @@ Coming soon...
 
 # 2) Human Fragility
 
-All the answers are in a *scale of 0-1**, i.e. can have the following values: 0, 0.25, 0.5, 0.75, 1. The higher, the more fragile.
+All the answers are on a **scale of 0-1**, i.e. can have the following values: 0, 0.25, 0.5, 0.75, 1. The higher, the more fragile.
 
 The higher, the more fragile.
 
@@ -75,7 +75,8 @@ df %>%
   arrange(desc(answers)) %>%
   select(Q5.5.1_raw, answers) %>%
   mutate(percentage = answers/sum(answers)) %>%
-  kable(align = "lc") %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
@@ -101,15 +102,17 @@ df %>%
 df %>% 
   group_by(Q1.5_County) %>% 
   summarize(mean = mean(Q5.5.1_unimputed, na.rm = TRUE)) %>% 
-  kable(align = "lc") %>%
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
-  group_by(Q5.5.1_raw, Q1.5_County) %>%
-  summarise(answers = n()) %>%
+  group_by(Q1.5_County, Q5.5.1_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
   arrange(desc(Q1.5_County)) %>%
-  select(Q1.5_County, Q5.5.1_raw, answers) %>%
-  mutate(percentage = answers/sum(answers)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q5.5.1_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
@@ -132,7 +135,8 @@ df %>%
   arrange(desc(answers)) %>%
   select(Q5.5.2_raw, answers) %>%
   mutate(percentage = answers/sum(answers)) %>%
-  kable(align = "lc") %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
@@ -158,15 +162,17 @@ df %>%
 df %>% 
   group_by(Q1.5_County) %>% 
   summarize(mean = mean(Q5.5.2_unimputed, na.rm = TRUE)) %>% 
-  kable(align = "lc") %>%
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
-  group_by(Q5.5.2_raw, Q1.5_County) %>%
-  summarise(answers = n()) %>%
+  group_by(Q1.5_County, Q5.5.2_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
   arrange(desc(Q1.5_County)) %>%
-  select(Q1.5_County, Q5.5.2_raw, answers) %>%
-  mutate(percentage = answers/sum(answers)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q5.5.2_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
@@ -189,7 +195,8 @@ df %>%
   arrange(desc(answers)) %>%
   select(Q5.5.3_raw, answers) %>%
   mutate(percentage = answers/sum(answers)) %>%
-  kable(align = "lc") %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
@@ -215,15 +222,17 @@ df %>%
 df %>% 
   group_by(Q1.5_County) %>% 
   summarize(mean = mean(Q5.5.3_unimputed, na.rm = TRUE)) %>% 
-  kable(align = "lc") %>%
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
-  group_by(Q5.5.3_raw, Q1.5_County) %>%
-  summarise(answers = n()) %>%
+  group_by(Q1.5_County, Q5.5.3_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
   arrange(desc(Q1.5_County)) %>%
-  select(Q1.5_County, Q5.5.3_raw, answers) %>%
-  mutate(percentage = answers/sum(answers)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q5.5.3_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
@@ -246,7 +255,8 @@ df %>%
   arrange(desc(answers)) %>%
   select(Q7.1_raw, answers) %>%
   mutate(percentage = answers/sum(answers)) %>%
-  kable(align = "lc") %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
@@ -272,15 +282,17 @@ df %>%
 df %>% 
   group_by(Q1.5_County) %>% 
   summarize(mean = mean(Q7.1_unimputed, na.rm = TRUE)) %>% 
-  kable(align = "lc") %>%
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
-  group_by(Q7.1_raw, Q1.5_County) %>%
-  summarise(answers = n()) %>%
+  group_by(Q1.5_County, Q7.1_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
   arrange(desc(Q1.5_County)) %>%
-  select(Q1.5_County, Q7.1_raw, answers) %>%
-  mutate(percentage = answers/sum(answers)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q7.1_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
@@ -303,7 +315,8 @@ df %>%
   arrange(desc(answers)) %>%
   select(Q8.5.6_raw, answers) %>%
   mutate(percentage = answers/sum(answers)) %>%
-  kable(align = "lc") %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
@@ -329,15 +342,356 @@ df %>%
 df %>% 
   group_by(Q1.5_County) %>% 
   summarize(mean = mean(Q8.5.6_unimputed, na.rm = TRUE)) %>% 
-  kable(align = "lc") %>%
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
   kable_styling(position = "left", full_width = F)
 
 df %>%
-  group_by(Q8.5.6_raw, Q1.5_County) %>%
-  summarise(answers = n()) %>%
+  group_by(Q1.5_County, Q8.5.6_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
   arrange(desc(Q1.5_County)) %>%
-  select(Q1.5_County, Q8.5.6_raw, answers) %>%
-  mutate(percentage = answers/sum(answers)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q8.5.6_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Additional Questions
+
+Coming soon...
+
+# 3) Political and Legal Fragility 
+
+All the answers are in a **scale of 0-1**, i.e. can have the following values: 0, 0.25, 0.5, 0.75, 1. The higher, the more fragile.
+
+The higher, the more fragile.
+
+## Index Questions
+
+### Q10.1.2: How much confidence do you have in your state government? {.tabset}
+
+0 (none) to 1 (a lot)
+
+#### Entire sample
+
+```{r Q10.1.2_raw, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |>
+  summarize(mean = mean(Q10.1.2_unimputed, na.rm = TRUE)) |>
+  kable(align = "lc") |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.1.2_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(answers)) |>
+  select(Q10.1.2_raw, answers) |>
+  mutate(percentage = answers/sum(answers)) |>
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.1.2_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(-answers)) |>
+  select(Q10.1.2_raw, answers) |>
+  mutate(percentage = answers / sum(answers), Q10.1.2_raw = factor(Q10.1.2_raw)) |>
+  ggplot(aes(Q10.1.2_raw, answers)) +
+  geom_col(fill = "#263e58") +
+   geom_text(aes(label = answers), 
+            vjust = 0.5,
+            hjust = -0.3,
+            size = 2.0) +
+  labs(x = "Q10.1.2: Trust in State Governments", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  theme_minimal() +
+  coord_flip()
+
+```
+
+#### By county
+
+```{r Q10.1.2_raw by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |> 
+  group_by(Q1.5_County) |> 
+  summarize(mean = mean(Q10.1.2_unimputed, na.rm = TRUE)) |> 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) |>
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q10.1.2_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q10.1.2_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q10.1.10: How much confidence do you have in informal authorities, such as councils of elders? {.tabset}
+
+0 (none) to 1 (a lot)
+
+#### Entire sample
+
+```{r Q10.1.10_raw, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |>
+  summarize(mean = mean(Q10.1.10_unimputed, na.rm = TRUE)) |>
+  kable(align = "lc") |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.1.10_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(answers)) |>
+  select(Q10.1.10_raw, answers) |>
+  mutate(percentage = answers/sum(answers)) |>
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.1.10_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(-answers)) |>
+  select(Q10.1.10_raw, answers) |>
+  mutate(percentage = answers / sum(answers), Q10.1.10_raw = factor(Q10.1.10_raw)) |>
+  ggplot(aes(Q10.1.10_raw, answers)) +
+  geom_col(fill = "#263e58") +
+  geom_text(aes(label = answers), 
+            vjust = 0.5,
+            hjust = -0.3,
+            size = 2.0) +
+  labs(x = "Q10.1.10: Trust in Informal Authorities", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  theme_minimal() +
+  coord_flip()
+```
+
+#### By county
+
+```{r Q10.1.10_raw by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |> 
+  group_by(Q1.5_County) |> 
+  summarize(mean = mean(Q10.1.10_unimputed, na.rm = TRUE)) |> 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) |>
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q10.1.10_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q10.1.10_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q10.10: South Sudan’s next national elections are scheduled for December 2024 after being postponed several times. How safe or unsafe would you feel going to a polling station to cast your vote? {.tabset}
+
+0 (very unsafe) to 1 (very safe)
+
+#### Entire sample
+
+```{r Q10.10_raw, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |>
+  summarize(mean = mean(Q10.10_unimputed, na.rm = TRUE)) |>
+  kable(align = "lc") |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.10_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(answers)) |>
+  select(Q10.10_raw, answers) |>
+  mutate(percentage = answers/sum(answers)) |>
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.10_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(-answers)) |>
+  select(Q10.10_raw, answers) |>
+  mutate(percentage = answers / sum(answers), Q10.10_raw = factor(Q10.10_raw)) |>
+  ggplot(aes(Q10.10_raw, answers)) +
+  geom_col(fill = "#263e58") +
+  geom_text(aes(label = answers), 
+            vjust = 0.5,
+            hjust = -0.3,
+            size = 2.0) +
+  labs(x = "Q10.10: Participation in Democracy Without Fear", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  theme_minimal() +
+  coord_flip()
+
+```
+
+#### By county
+
+```{r Q10.10_raw by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |> 
+  group_by(Q1.5_County) |> 
+  summarize(mean = mean(Q10.10_unimputed, na.rm = TRUE)) |> 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) |>
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q10.10_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q10.10_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q10.12: At present, how safe do you feel speaking publicly on politically sensitive issues? {.tabset}
+
+0(very unsafe) to 1(very safe)
+
+#### Entire sample
+
+```{r Q10.12_raw, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |>
+  summarize(mean = mean(Q10.12_unimputed, na.rm = TRUE)) |>
+  kable(align = "lc") |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.12_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(answers)) |>
+  select(Q10.12_raw, answers) |>
+  mutate(percentage = answers/sum(answers)) |>
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.12_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(-answers)) |>
+  select(Q10.12_raw, answers) |>
+  mutate(percentage = answers / sum(answers), Q10.12_raw = factor(Q10.12_raw)) |>
+  ggplot(aes(Q10.12_raw, answers)) +
+  geom_col(fill = "#263e58") +
+  geom_text(aes(label = answers), 
+            vjust = 0.5,
+            hjust = -0.3,
+            size = 2.0) +
+  labs(x = "Q10.12: Freedom of Speech", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  theme_minimal() +
+  coord_flip()
+```
+
+#### By county
+
+```{r Q10.12_raw by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |> 
+  group_by(Q1.5_County) |> 
+  summarize(mean = mean(Q10.12_unimputed, na.rm = TRUE)) |> 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) |>
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q10.12_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q10.12_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q10.13: Which of the following statements best describes the role that politicians in Juba play in your community? {.tabset}
+
+0(they make the community much less safe) to 1(they make the community much more safe)
+
+#### Entire sample
+
+```{r Q10.13_raw, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |>
+  summarize(mean = mean(Q10.13_unimputed, na.rm = TRUE)) |>
+  kable(align = "lc") |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.13_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(answers)) |>
+  select(Q10.13_raw, answers) |>
+  mutate(percentage = answers/sum(answers)) |>
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) |>
+  kable_styling(position = "left", full_width = F)
+
+df |>
+  group_by(Q10.13_raw) |>
+  summarise(answers = n()) |>
+  arrange(desc(-answers)) |>
+  select(Q10.13_raw, answers) |>
+  mutate(percentage = answers / sum(answers), Q10.13_raw = factor(Q10.13_raw)) |>
+  ggplot(aes(Q10.13_raw, answers)) +
+  geom_col(fill = "#263e58") +
+  geom_text(aes(label = answers), 
+            vjust = 0.5,
+            hjust = -0.3,
+            size = 2.0) +
+  labs(x = "Q10.13: Trust in National Government", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  theme_minimal() +
+  coord_flip()
+```
+
+#### By county
+
+```{r Q10.13_raw by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df |> 
+  group_by(Q1.5_County) |> 
+  summarize(mean = mean(Q10.13_unimputed, na.rm = TRUE)) |> 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) |>
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q10.13_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q10.13_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
