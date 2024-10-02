@@ -72,7 +72,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q0.2 = factor(Q0.2)) %>%
   ggplot(aes(Q0.2, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q0.2", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -121,7 +121,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q1.5_County = factor(Q1.5_County)) %>%
   ggplot(aes(Q1.5_County, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col(fill = "blue", color = "black", alpha = 0.5)+
   labs(x = "Q1.5_County", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -153,7 +153,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q1.5_Payam = factor(Q1.5_Payam)) %>%
   ggplot(aes(Q1.5_Payam, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q1.5_Payam", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -202,7 +202,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q2.1 = factor(Q2.1)) %>%
   ggplot(aes(Q2.1, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q2.1", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -251,7 +251,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q2.2 = factor(Q2.2)) %>%
   ggplot(aes(Q2.2, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q2.2", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -300,7 +300,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q2.8 = factor(Q2.8)) %>%
   ggplot(aes(Q2.8, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q2.8", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -349,7 +349,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q2.10 = factor(Q2.10)) %>%
   ggplot(aes(Q2.10, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q2.10", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -398,7 +398,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q2.11 = factor(Q2.11)) %>%
   ggplot(aes(Q2.11, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q2.11", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -460,7 +460,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.1_raw = factor(Q5.5.1_raw)) %>%
   ggplot(aes(Q5.5.1_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.1", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -520,7 +520,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.2_raw = factor(Q5.5.2_raw)) %>%
   ggplot(aes(Q5.5.2_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.2", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -580,7 +580,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.3_raw = factor(Q5.5.3_raw)) %>%
   ggplot(aes(Q5.5.3_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.3", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -640,7 +640,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q7.1_raw = factor(Q7.1_raw)) %>%
   ggplot(aes(Q7.1_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q7.1", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -700,7 +700,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q8.5.6_raw = factor(Q8.5.6_raw)) %>%
   ggplot(aes(Q8.5.6_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q8.5.6", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -773,7 +773,7 @@ df |>
   select(Q10.1.2_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.1.2_raw = factor(Q10.1.2_raw)) |>
   ggplot(aes(Q10.1.2_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
    geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -839,7 +839,7 @@ df |>
   select(Q10.1.10_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.1.10_raw = factor(Q10.1.10_raw)) |>
   ggplot(aes(Q10.1.10_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -904,7 +904,7 @@ df |>
   select(Q10.10_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.10_raw = factor(Q10.10_raw)) |>
   ggplot(aes(Q10.10_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -970,7 +970,7 @@ df |>
   select(Q10.12_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.12_raw = factor(Q10.12_raw)) |>
   ggplot(aes(Q10.12_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -1035,7 +1035,7 @@ df |>
   select(Q10.13_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.13_raw = factor(Q10.13_raw)) |>
   ggplot(aes(Q10.13_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  geom_col( fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -1118,7 +1118,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q11.10A_raw = factor(Q11.10A_raw)) %>%
   ggplot(aes(Q11.10A_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  geom_col( fill = "blue", color = "black", alpha = 0.7) +
   labs(x = "Q11.10A_raw", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -1178,7 +1178,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q11.10B_raw = factor(Q11.10B_raw)) %>%
   ggplot(aes(Q11.10B_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  geom_col( fill = "blue", color = "black", alpha = 0.7) +
   labs(x = "Q11.10B_raw", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -1238,7 +1238,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q11.10C_raw = factor(Q11.10C_raw)) %>%
   ggplot(aes(Q11.10C_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  geom_col( fill = "blue", color = "black", alpha = 0.7) +
   labs(x = "Q11.10C_raw", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -1296,7 +1296,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q11.10D_raw = factor(Q11.10D_raw)) %>%
   ggplot(aes(Q11.10D_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  geom_col( fill = "blue", color = "black", alpha = 0.7) +
   labs(x = "Q11.10D_raw", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -1354,7 +1354,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q11.11_raw = factor(Q11.11_raw)) %>%
   ggplot(aes(Q11.11_raw, answers)) +
-  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  geom_col( fill = "blue", color = "black", alpha = 0.7) +
   labs(x = "Q11.11_raw", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
