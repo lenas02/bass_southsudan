@@ -48,7 +48,380 @@ All the descriptive calculated for index questions were based on the **unimputed
 
 # 1) Socio-demographics questions
 
-Coming soon...
+## Languages {.tabset} 
+
+### Entire sample
+
+```{r Languages, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q0.2) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q0.2, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q0.2) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q0.2, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q0.2 = factor(Q0.2)) %>%
+  ggplot(aes(Q0.2, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q0.2", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Languages by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q0.2) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q0.2, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## County {.tabset} 
+
+### Entire sample
+
+```{r County, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q1.5_County, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q1.5_County, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q1.5_County = factor(Q1.5_County)) %>%
+  ggplot(aes(Q1.5_County, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q1.5_County", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+## Payam {.tabset} 
+
+### Entire sample
+
+```{r Payam, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_Payam) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q1.5_Payam, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_Payam) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q1.5_Payam, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q1.5_Payam = factor(Q1.5_Payam)) %>%
+  ggplot(aes(Q1.5_Payam, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q1.5_Payam", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Payam by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q1.5_Payam) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q1.5_Payam, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Sex {.tabset} 
+
+### Entire sample
+
+```{r Sex, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q2.1) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q2.1, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q2.1) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q2.1, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q2.1 = factor(Q2.1)) %>%
+  ggplot(aes(Q2.1, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q2.1", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Sex by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q2.1) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q2.1, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Age {.tabset} 
+
+### Entire sample
+
+```{r Age, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q2.2) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q2.2, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q2.2) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q2.2, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q2.2 = factor(Q2.2)) %>%
+  ggplot(aes(Q2.2, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q2.2", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Age by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q2.2) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q2.2, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Which of the following information sources do you rely on most? {.tabset} 
+
+### Entire sample
+
+```{r Source of info, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q2.8) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q2.8, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q2.8) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q2.8, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q2.8 = factor(Q2.8)) %>%
+  ggplot(aes(Q2.8, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q2.8", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Source of info by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q2.8) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q2.8, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Religion {.tabset} 
+
+### Entire sample
+
+```{r Religion, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q2.10) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q2.10, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q2.10) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q2.10, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q2.10 = factor(Q2.10)) %>%
+  ggplot(aes(Q2.10, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q2.10", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Religion by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q2.10) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q2.10, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Ethnicity {.tabset} 
+
+### Entire sample
+
+```{r Ethnicity, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q2.11) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q2.11, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q2.11) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q2.11, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q2.11 = factor(Q2.11)) %>%
+  ggplot(aes(Q2.11, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
+  labs(x = "Q2.11", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip()
+
+```
+
+### By county
+
+```{r Ethnicity by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>%
+  group_by(Q1.5_County, Q2.11) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q2.11, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
 
 # 2) Human Fragility
 
@@ -87,7 +460,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.1_raw = factor(Q5.5.1_raw)) %>%
   ggplot(aes(Q5.5.1_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.1", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -147,7 +520,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.2_raw = factor(Q5.5.2_raw)) %>%
   ggplot(aes(Q5.5.2_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.2", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -207,7 +580,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q5.5.3_raw = factor(Q5.5.3_raw)) %>%
   ggplot(aes(Q5.5.3_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q5.5.3", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -267,7 +640,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q7.1_raw = factor(Q7.1_raw)) %>%
   ggplot(aes(Q7.1_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q7.1", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -327,7 +700,7 @@ df %>%
   mutate(percentage = answers / sum(answers),
          Q8.5.6_raw = factor(Q8.5.6_raw)) %>%
   ggplot(aes(Q8.5.6_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   labs(x = "Q8.5.6", y = "Number of respondents") +
   theme(axis.text.x = element_text(size = 11),
         axis.title.x = element_text(margin = margin(t = 10))) +
@@ -400,7 +773,7 @@ df |>
   select(Q10.1.2_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.1.2_raw = factor(Q10.1.2_raw)) |>
   ggplot(aes(Q10.1.2_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
    geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -466,7 +839,7 @@ df |>
   select(Q10.1.10_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.1.10_raw = factor(Q10.1.10_raw)) |>
   ggplot(aes(Q10.1.10_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -531,7 +904,7 @@ df |>
   select(Q10.10_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.10_raw = factor(Q10.10_raw)) |>
   ggplot(aes(Q10.10_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -597,7 +970,7 @@ df |>
   select(Q10.12_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.12_raw = factor(Q10.12_raw)) |>
   ggplot(aes(Q10.12_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -662,7 +1035,7 @@ df |>
   select(Q10.13_raw, answers) |>
   mutate(percentage = answers / sum(answers), Q10.13_raw = factor(Q10.13_raw)) |>
   ggplot(aes(Q10.13_raw, answers)) +
-  geom_col(fill = "#263e58") +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7)+
   geom_text(aes(label = answers), 
             vjust = 0.5,
             hjust = -0.3,
@@ -692,6 +1065,320 @@ df %>%
   mutate(percentage = answers / sum(answers)) %>%
   ungroup() %>%
   select(Q1.5_County, Q10.13_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+## Additional Questions
+
+Coming soon...
+
+# 4) Environmental Fragility
+
+All the answers are in a **scale of 0-1**, i.e. can have the following values: 0, 0.25, 0.5, 0.75, 1. The higher, the more fragile.
+
+The higher, the more fragile.
+
+Ex:
+0 = Not severe at all 
+0.25 = Not severe
+0.50 = Somewhat severe
+0.75 = Severe
+1 = Extremely severe
+
+## Index Questions
+
+### Q11.10A Many people in South Sudan have experienced the following: too much rain, too little rain, temperatures that are too high, temperatures that are too low, pests and crop diseases, and deforestation and erosion. How severe would you say the impact of any of these experiences have been on your household income, on a scale from 1 to 5 where 1 means “not severe at all and 5 means “extremely severe?” {.tabset}
+
+#### Entire sample
+
+```{r Q11.10A, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  summarize(mean = mean(Q11.10A_unimputed, na.rm = TRUE)) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10A_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q11.10A_raw, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10A_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q11.10A_raw, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q11.10A_raw = factor(Q11.10A_raw)) %>%
+  ggplot(aes(Q11.10A_raw, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  labs(x = "Q11.10A_raw", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip() 
+
+```
+
+#### By county
+
+```{r Q11.10A by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  group_by(Q1.5_County) %>% 
+  summarize(mean = mean(Q11.10A_unimputed, na.rm = TRUE)) %>% 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q11.10A_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q11.10A_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q11.10B And how severe would you say the impact of any of these experiences have been on your household food consumption?
+
+#### Entire sample
+
+```{r Q11.10B, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  summarize(mean = mean(Q11.10B_unimputed, na.rm = TRUE)) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10B_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q11.10B_raw, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10B_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q11.10B_raw, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q11.10B_raw = factor(Q11.10B_raw)) %>%
+  ggplot(aes(Q11.10B_raw, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  labs(x = "Q11.10B_raw", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip() 
+
+```
+
+#### By county
+
+```{r Q11.10B by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  group_by(Q1.5_County) %>% 
+  summarize(mean = mean(Q11.10B_unimputed, na.rm = TRUE)) %>% 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q11.10B_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q11.10B_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q11.10C And how severe would you say the impact of any of these experiences have been on your household’s ability to choose where you live?
+
+#### Entire sample
+
+```{r Q11.10C, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  summarize(mean = mean(Q11.10C_unimputed, na.rm = TRUE)) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10C_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q11.10C_raw, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10C_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q11.10C_raw, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q11.10C_raw = factor(Q11.10C_raw)) %>%
+  ggplot(aes(Q11.10C_raw, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  labs(x = "Q11.10C_raw", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip() 
+
+```
+
+#### By county
+
+```{r Q11.10C by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  group_by(Q1.5_County) %>% 
+  summarize(mean = mean(Q11.10C_unimputed, na.rm = TRUE)) %>% 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q11.10C_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q11.10C_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q11.10D And how severe would you say the impact of any of these experiences have been on your household’s health?
+
+```{r Q11.10D, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  summarize(mean = mean(Q11.10D_unimputed, na.rm = TRUE)) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10D_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q11.10D_raw, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.10D_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q11.10D_raw, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q11.10D_raw = factor(Q11.10D_raw)) %>%
+  ggplot(aes(Q11.10D_raw, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  labs(x = "Q11.10D_raw", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip() 
+
+```
+
+#### By county
+
+```{r Q11.10D by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  group_by(Q1.5_County) %>% 
+  summarize(mean = mean(Q11.10D_unimputed, na.rm = TRUE)) %>% 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q11.10D_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q11.10D_raw, answers, percentage) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+```
+
+### Q11.11 Imagine that there was a flood coming to your town tomorrow. If you knew about this incoming flood before the water arrived, to what extent do you agree with the following statement: “I would be able to use this information to protect my household?”
+
+```{r Q11.11, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  summarize(mean = mean(Q11.11_unimputed, na.rm = TRUE)) %>%
+  kable(align = "lc") %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.11_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(answers)) %>%
+  select(Q11.11_raw, answers) %>%
+  mutate(percentage = answers/sum(answers)) %>%
+  kable(align = "lc", 
+        col.names = c("Response", "Number of Responses", "Percent of Total Responses")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q11.11_raw) %>%
+  summarise(answers = n()) %>%
+  arrange(desc(-answers)) %>%
+  select(Q11.11_raw, answers) %>%
+  mutate(percentage = answers / sum(answers),
+         Q11.11_raw = factor(Q11.11_raw)) %>%
+  ggplot(aes(Q11.11_raw, answers)) +
+  geom_col(binwidth = 0.125, fill = "blue", color = "black", alpha = 0.7) +
+  labs(x = "Q11.11_raw", y = "Number of respondents") +
+  theme(axis.text.x = element_text(size = 11),
+        axis.title.x = element_text(margin = margin(t = 10))) +
+  coord_flip() 
+
+```
+#### By county
+
+```{r Q11.11 by county, eval = TRUE, warnings = FALSE, echo = FALSE, message = FALSE, out.width="65%"}
+
+df %>% 
+  group_by(Q1.5_County) %>% 
+  summarize(mean = mean(Q11.11_unimputed, na.rm = TRUE)) %>% 
+  kable(align = "lc", col.names = c("County", "Mean Response (0 to 1)")) %>%
+  kable_styling(position = "left", full_width = F)
+
+df %>%
+  group_by(Q1.5_County, Q11.11_raw) %>%
+  summarise(answers = n(), .groups = 'drop') %>%
+  arrange(desc(Q1.5_County)) %>%
+  group_by(Q1.5_County) %>%
+  mutate(percentage = answers / sum(answers)) %>%
+  ungroup() %>%
+  select(Q1.5_County, Q11.11_raw, answers, percentage) %>%
   kable(align = "lc") %>%
   kable_styling(position = "left", full_width = F)
 
